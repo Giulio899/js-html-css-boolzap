@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Arimo', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   background: linear-gradient(to bottom, #009688 15%, #dadbd4 0%);
   height:100vh;
   display: flex;
@@ -15,7 +15,8 @@ body {
 }
 
 .container {
-  width: 950px;
+  width: 80%;
+  min-width: 950px;
   height: 95vh;
   background-color: orange;
   display: flex;
@@ -23,7 +24,7 @@ body {
 
 /* Inizio aside */
 aside {
-  flex-basis: 300px;
+  flex-basis: 33%;
   height: 100%;
   background-color: grey;
 }
@@ -32,14 +33,73 @@ aside {
 aside .nome-utente {
   width: 100%;
   height: 70px;
-  background-color: purple;
+  padding: 0 10px;
+  background-color: #eaeaea;
+  display: flex;
+  align-items: center;
+}
+
+aside .nome-utente img.foto-profilo {
+  height: 55px;
+  border-radius: 50%;
+}
+
+aside .nome-utente span {
+  margin-left: 5px;
+  font-size: 1.1em;
+}
+
+aside .nome-utente .icone {
+  flex-grow: 1;
+  color: #b1b1b1;
+  text-align: right;
+}
+
+aside .nome-utente .icone .fas{
+  margin-right: 8px;
+  cursor: pointer;
 }
 
 /* aside center */
 aside .nuove-notifiche {
   width: 100%;
   height: 80px;
-  background-color: pink;
+  padding: 10px 5px 10px 10px;
+  background-color: #8edafc;
+  display: flex;
+  align-items: center;
+}
+
+aside .nuove-notifiche .campanella {
+  /* color: #8edafc; */
+  flex-basis: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #8edafc;
+  font-size: 1.2em;
+}
+
+aside .nuove-notifiche .testo {
+  flex-basis: calc(100% - 45px);
+  padding-left: 10px;
+  font-size: 1em;
+}
+
+aside .nuove-notifiche .testo span {
+  display: block;
+  font-weight: 500;
+}
+
+aside .nuove-notifiche .testo small {
+  display: inline-block;
+  margin-top: 3px;
+  font-size: 1em;
+  color: #4f7485;
+  text-decoration: underline;
 }
 
 /* aside bottom */
@@ -47,13 +107,61 @@ aside .cerca {
   width: 100%;
   height: calc(100% - 150px);
   background-color: green;
+  background-color: #fafafa;
 }
+
+aside .cerca .search-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid white;
+  padding: 5px;
+  position: relative;
+}
+
+aside .cerca .search-input input {
+  width: 100%;
+  padding: 5px 10px 5px 40px;
+  outline: none;
+  border: 1px solid #f5f5f5;
+  color: #b6b9bb;
+}
+
+aside .cerca .search-input .fas {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  transform: translateY(-50%);
+  color: #b6b9bb;
+}
+
+aside .cerca .search-contact {
+  height: calc(100% - 40px);
+  background-color: white;
+  overflow-y: auto;
+}
+
+aside .cerca .search-contact .contact-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+aside .cerca .search-contact .contact-item img {
+  height: 55px;
+  border-radius: 50%;
+}
+
+aside .cerca .search-contact .contact-item span {
+  margin-left: 10px;
+}
+
 /* Fine aside */
 
 
 /* Inizio main */
 main {
-  flex-basis: calc(950px - 300px);
+  flex-basis: 67%;
   height: 100%;
   background-color: red;
 }
