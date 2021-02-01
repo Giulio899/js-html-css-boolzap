@@ -55,10 +55,11 @@ aside .nome-utente .icone {
   flex-grow: 1;
   color: #b1b1b1;
   text-align: right;
+  font-size: 1.3em;
 }
 
 aside .nome-utente .icone .fas{
-  margin-right: 8px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -118,19 +119,21 @@ aside .cerca .search-input {
   border: 1px solid white;
   padding: 5px;
   position: relative;
+  border-bottom: 1px solid #ededed;
 }
 
 aside .cerca .search-input input {
   width: 100%;
   padding: 5px 10px 5px 40px;
   outline: none;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 25px;
   color: #767676;
 }
 
 aside .cerca .search-input .fas {
   position: absolute;
-  top: 18px;
+  top: 19px;
   left: 20px;
   transform: translateY(-50%);
   color: #b6b9bb;
@@ -146,7 +149,11 @@ aside .cerca .search-contact .contact-item {
   display: flex;
   align-items: center;
   padding: 10px 15px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #ebebeb;
+}
+
+aside .cerca .search-contact .contact-item:hover {
+  background-color: #f0f0f0;
 }
 
 aside .cerca .search-contact .contact-item img {
@@ -213,8 +220,33 @@ main .header-main .icone .fas {
 main .testo-messaggi {
   width: 100%;
   height: calc(100% - 140px);
+  min-width: 0;
   background-color: white;
   background-image: url('../img/mine.jpg');
+  padding: 0px 50px;
+  font-size: .9em;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+main .testo-messaggi .message {
+  width: 70%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+  background-color: white;
+  color: #303030;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+main .testo-messaggi .message.received {
+  align-self: flex-start;
+}
+
+main .testo-messaggi .message.sent {
+  align-self: flex-end;
+  background-color: #dcf8c6;
 }
 
 /* main-bottom */
@@ -241,5 +273,6 @@ main .input-testo input {
   font-size: 1.3em;
   color: #767676;
   outline: none;
-  border: 1px solid #abadb3;
+  border: 1px solid #d7d7d7;
+  border-radius: 25px;
 }
