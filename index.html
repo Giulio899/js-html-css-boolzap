@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Boolzap</title>
-  <!-- CDN Vue -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,13 +14,16 @@
   <!-- Link CSS -->
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- CDN Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 
 
 
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" id="app">
     <!-- Inizio sezione sinistra -->
     <aside>
 
@@ -56,47 +58,16 @@
         </div>
 
         <!-- Aside bottom down -->
-        <div class="search-contact" id="#bool">
+        <div class="search-contact">
 
-          <div class="contact-item">
-            <img src="img/avatar_2.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>{{ messaggio }}</span>
+          <div class="contact-item" v-for="item in contatti">
+            <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
+            <div class="info">
+              <span>{{ item.name }}</span>
+              <p>{{ item.messages[0].text }}</p>
+            </div>
           </div>
 
-          <!-- <div class="contact-item">
-            <img src="img/avatar_3.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>Francesco</span>
-          </div>
-
-          <div class="contact-item">
-            <img src="img/avatar_4.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>Filippo</span>
-          </div>
-
-          <div class="contact-item">
-            <img src="img/avatar_5.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>Fabio</span>
-          </div>
-
-          <div class="contact-item">
-            <img src="img/avatar_6.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>Maria</span>
-          </div>
-
-          <div class="contact-item">
-            <img src="img/avatar_7.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>Roberto</span>
-          </div>
-
-          <div class="contact-item">
-            <img src="img/avatar_8.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>Federico</span>
-          </div>
-
-          <div class="contact-item">
-            <img src="img/avatar_1.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>Giulio</span>
-          </div> -->
         </div>
 
       </div>
@@ -125,7 +96,7 @@
       <div class="testo-messaggi">
 
         <div class="message received">
-          <p>Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo.</p>
+          <p>provaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
         </div>
 
         <div class="message sent">
@@ -164,6 +135,8 @@
     </main>
 
   </div>
+
+
 
   <script src="js/script.js" charset="utf-8"></script>
 </body>

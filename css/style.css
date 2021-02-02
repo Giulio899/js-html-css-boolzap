@@ -150,6 +150,7 @@ aside .cerca .search-contact .contact-item {
   align-items: center;
   padding: 10px 15px;
   border-bottom: 1px solid #ebebeb;
+  cursor: pointer;
 }
 
 aside .cerca .search-contact .contact-item:hover {
@@ -161,8 +162,16 @@ aside .cerca .search-contact .contact-item img {
   border-radius: 50%;
 }
 
-aside .cerca .search-contact .contact-item span {
+aside .cerca .search-contact .contact-item span,
+aside .cerca .search-contact .contact-item p {
   margin-left: 10px;
+  word-break: break-all;
+}
+
+aside .cerca .search-contact .contact-item p {
+  margin-top: 3px;
+  color: #666;
+  font-size: .9em;
 }
 
 /* Fine aside */
@@ -238,6 +247,7 @@ main .testo-messaggi .message {
   background-color: white;
   color: #303030;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  word-break: break-all;
 }
 
 main .testo-messaggi .message.received {
