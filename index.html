@@ -64,7 +64,8 @@
             <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
             <div class="info">
               <span>{{ item.name }}</span>
-              <p>{{ item.messages[0].text }}</p>
+              <p v-for="dato in item.messages">{{ dato.text }}</p>
+              <!-- <p>{{ item.messages[0].text }}</p> -->
             </div>
           </div>
 
