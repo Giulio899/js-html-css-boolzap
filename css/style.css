@@ -240,14 +240,24 @@ main .testo-messaggi {
 }
 
 main .testo-messaggi .message {
-  width: 70%;
-  padding: 10px;
+  /* width: 70%; */
+  padding: 5px 50px 20px 20px;
   margin: 5px 0;
   border-radius: 10px;
   background-color: white;
   color: #303030;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   word-break: break-all;
+  position: relative;
+}
+
+main .testo-messaggi .message small {
+  color: rgb(168, 168, 168);
+  text-align: right;
+  position: absolute;
+  right: 8px;
+  bottom: 5px;
+  font-size: .8em;
 }
 
 main .testo-messaggi .message.received {

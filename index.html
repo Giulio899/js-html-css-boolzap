@@ -30,7 +30,7 @@
       <!-- Aside top -->
       <div class="nome-utente">
         <img src="img/avatar_1.jpg" alt="Foto profilo" class="foto-profilo">
-        <span>Nome</span>
+        <span>{{ utente.nome }}</span>
         <div class="icone">
           <i class="fas fa-circle-notch" title="Stato"></i>
           <i class="fas fa-comment-alt" title="Nuova chat"></i>
@@ -64,13 +64,11 @@
             <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
             <div class="info">
               <span>{{ item.name }}</span>
-              <p v-for="dato in item.messages">{{ dato.text }}</p>
-              <!-- <p>{{ item.messages[0].text }}</p> -->
+              <p>{{ item.messages[item.messages.length - 1].text }}</p>
             </div>
           </div>
 
         </div>
-
       </div>
 
     </aside>
@@ -81,9 +79,9 @@
       <!-- main top -->
       <div class="header-main">
 
-        <img src="img/avatar_1.jpg" alt="Foto profilo" class="foto-profilo">
+        <img :src="'img/avatar' + contatti[1].avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
         <div class="info-accesso">
-          <span>Giulio</span>
+          <span> {{ contatti[1].name }} </span>
           <p>Ultimo accesso alle</p>
         </div>
         <div class="icone">
@@ -96,33 +94,21 @@
       <!-- main center (sezione principale) -->
       <div class="testo-messaggi">
 
-        <div class="message received">
-          <p>provaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-        </div>
+        <template v-for="item in contatti">
+          <template v-for="element in item.messages" >
 
-        <div class="message sent">
-          <p>Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato.</p>
-        </div>
+            <div class="message received"  v-if="element.type == 'received'">
+              <p>{{ element.text }}</p>
+              <small>{{ element.shortdate }}</small>
+            </div>
 
-        <div class="message sent">
-          <p>Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato.</p>
-        </div>
+            <div class="message sent" v-else>
+              <p>{{element.text}}</p>
+              <small>{{ element.shortdate }}</small>
+            </div>
 
-        <div class="message sent">
-          <p>Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato.</p>
-        </div>
-
-        <div class="message received">
-          <p>Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. Esempio di messaggio in arrivo. </p>
-        </div>
-
-        <div class="message sent">
-          <p>Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato.</p>
-        </div>
-
-        <div class="message sent">
-          <p>Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato. Esempio di messaggio inviato.</p>
-        </div>
+          </template>
+        </template>
 
 
       </div>
