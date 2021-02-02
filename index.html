@@ -94,8 +94,7 @@
       <!-- main center (sezione principale) -->
       <div class="testo-messaggi">
 
-        <template v-for="item in contatti">
-          <template v-for="element in item.messages" >
+          <template v-for="(element) in contatti[1].messages" >
 
             <div class="message received"  v-if="element.type == 'received'">
               <p>{{ element.text }}</p>
@@ -108,7 +107,6 @@
             </div>
 
           </template>
-        </template>
 
 
       </div>
