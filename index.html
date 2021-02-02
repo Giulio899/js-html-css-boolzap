@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Boolzap</title>
+  <!-- CDN Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,6 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <!-- Link CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+
 
 
 </head>
@@ -24,7 +28,7 @@
       <!-- Aside top -->
       <div class="nome-utente">
         <img src="img/avatar_1.jpg" alt="Foto profilo" class="foto-profilo">
-        <span>Nome Utente</span>
+        <span>Nome</span>
         <div class="icone">
           <i class="fas fa-circle-notch" title="Stato"></i>
           <i class="fas fa-comment-alt" title="Nuova chat"></i>
@@ -52,14 +56,14 @@
         </div>
 
         <!-- Aside bottom down -->
-        <div class="search-contact">
+        <div class="search-contact" id="#bool">
 
           <div class="contact-item">
             <img src="img/avatar_2.jpg" alt="Foto Profilo" class="foto-profilo">
-            <span class='name'>Alessandro</span>
+            <span class='name'>{{ messaggio }}</span>
           </div>
 
-          <div class="contact-item">
+          <!-- <div class="contact-item">
             <img src="img/avatar_3.jpg" alt="Foto Profilo" class="foto-profilo">
             <span class='name'>Francesco</span>
           </div>
@@ -92,7 +96,7 @@
           <div class="contact-item">
             <img src="img/avatar_1.jpg" alt="Foto Profilo" class="foto-profilo">
             <span class='name'>Giulio</span>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -160,5 +164,7 @@
     </main>
 
   </div>
+
+  <script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>
