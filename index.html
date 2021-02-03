@@ -29,7 +29,7 @@
 
       <!-- Aside top -->
       <div class="nome-utente">
-        <img src="img/avatar_1.jpg" alt="Foto profilo" class="foto-profilo">
+        <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
         <span>{{ utente.nome }}</span>
         <div class="icone">
           <i class="fas fa-circle-notch" title="Stato"></i>
@@ -60,7 +60,7 @@
         <!-- Aside bottom down -->
         <div class="search-contact">
 
-          <div class="contact-item" v-for="item in contatti">
+          <div class="contact-item" v-for="(item, index) in contatti" :title="index" @click="changeMessage(index)">
             <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
             <div class="info">
               <span>{{ item.name }}</span>
@@ -79,9 +79,9 @@
       <!-- main top -->
       <div class="header-main">
 
-        <img :src="'img/avatar' + contatti[1].avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
+        <img :src="'img/avatar' + contatti[counter].avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
         <div class="info-accesso">
-          <span> {{ contatti[1].name }} </span>
+          <span> {{ contatti[counter].name }} </span>
           <p>Ultimo accesso alle</p>
         </div>
         <div class="icone">
@@ -94,7 +94,7 @@
       <!-- main center (sezione principale) -->
       <div class="testo-messaggi">
 
-          <template v-for="(element) in contatti[1].messages" >
+          <template v-for="(element) in contatti[counter].messages" >
 
             <div class="message received"  v-if="element.type == 'received'">
               <p>{{ element.text }}</p>

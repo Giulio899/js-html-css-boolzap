@@ -2,6 +2,7 @@ var app = new Vue({
   el: '#app',
   data: {
     // array di oggetti
+    counter: 0,
     contatti:
     [
       // oggetto 1
@@ -222,10 +223,16 @@ var app = new Vue({
     utente: {
       nome: 'Giulio',
       cognome: 'Tavoni',
+      avatar: '_user',
       access: '02.02.2021 ore 15.47',
       description: 'Playing on'
     }
 
-  } // fine data
+  }, // fine data
+  methods: {
+    changeMessage(index) {
+      this.counter = index;
+    }
+  }
 
 });
