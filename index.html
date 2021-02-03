@@ -29,8 +29,8 @@
 
       <!-- Aside top -->
       <div class="nome-utente">
-        <img :src="'img/avatar' + utente.avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
-        <span>{{ utente.nome }}</span>
+        <img :src="'img/avatar' + mainUser.avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
+        <span>{{ mainUser.nome }}</span>
         <div class="icone">
           <i class="fas fa-circle-notch" title="Stato"></i>
           <i class="fas fa-comment-alt" title="Nuova chat"></i>
@@ -60,7 +60,7 @@
         <!-- Aside bottom down -->
         <div class="search-contact">
 
-          <div class="contact-item" v-for="(item, index) in contatti" :title="index" @click="changeMessage(index)">
+          <div class="contact-item" v-for="(item, index) in contatti" @click="changeMessage(index)">
             <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
             <div class="info">
               <span>{{ item.name }}</span>
@@ -79,9 +79,9 @@
       <!-- main top -->
       <div class="header-main">
 
-        <img :src="'img/avatar' + contatti[counter].avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
+        <img :src="'img/avatar' + contatti[userSelected].avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
         <div class="info-accesso">
-          <span> {{ contatti[counter].name }} </span>
+          <span> {{ contatti[userSelected].name }} </span>
           <p>Ultimo accesso alle</p>
         </div>
         <div class="icone">
@@ -94,26 +94,17 @@
       <!-- main center (sezione principale) -->
       <div class="testo-messaggi">
 
-          <template v-for="(element) in contatti[counter].messages" >
-
-            <div class="message received"  v-if="element.type == 'received'">
+            <div v-for="(element) in contatti[userSelected].messages" class="message" :class="element.type">
               <p>{{ element.text }}</p>
               <small>{{ element.shortdate }}</small>
             </div>
-
-            <div class="message sent" v-else>
-              <p>{{element.text}}</p>
-              <small>{{ element.shortdate }}</small>
-            </div>
-
-          </template>
-
 
       </div>
       <!-- main bottom -->
       <div class="input-testo">
         <i class="far fa-smile"></i>
-        <input type="text" placeholder="Scrivi un messaggio">
+        <input type="text" placeholder="Scrivi un messaggio" v-model="messageInput" @keyup.enter="sendMessage">
+        <i class="fas fa-paper-plane" title="Invia" @click="sendMessage"></i>
         <i class="fas fa-microphone"></i>
       </div>
 
@@ -122,7 +113,9 @@
   </div>
 
 
-
+  <!-- link a moment.js -->
+  <script src="lib/moment/moment.min.js" charset="utf-8"></script>
+  <!-- link a JS -->
   <script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>

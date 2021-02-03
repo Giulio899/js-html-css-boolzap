@@ -146,6 +146,7 @@ aside .cerca .search-contact {
 }
 
 aside .cerca .search-contact .contact-item {
+  height: 76px;
   display: flex;
   align-items: center;
   padding: 10px 15px;
@@ -169,9 +170,11 @@ aside .cerca .search-contact .contact-item p {
 }
 
 aside .cerca .search-contact .contact-item p {
+  height: 16px;
   margin-top: 3px;
   color: #666;
   font-size: .9em;
+  overflow: hidden;
 }
 
 /* Fine aside */
@@ -240,8 +243,7 @@ main .testo-messaggi {
 }
 
 main .testo-messaggi .message {
-  /* width: 70%; */
-  padding: 5px 50px 20px 20px;
+  padding: 8px 38px 8px 20px;
   margin: 5px 0;
   border-radius: 10px;
   background-color: white;
@@ -256,7 +258,7 @@ main .testo-messaggi .message small {
   text-align: right;
   position: absolute;
   right: 8px;
-  bottom: 5px;
+  bottom: 3px;
   font-size: .8em;
 }
 
@@ -286,9 +288,13 @@ main .input-testo .fas {
   cursor: pointer;
 }
 
+main .input-testo .fa-microphone {
+  margin-left: 20px;
+}
+
 main .input-testo input {
   flex-grow: 1;
-  margin: 0 30px;
+  margin: 0 10px 0 20px;
   padding: 10px 15px;
   font-size: 1.3em;
   color: #767676;

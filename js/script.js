@@ -2,7 +2,7 @@ var app = new Vue({
   el: '#app',
   data: {
     // array di oggetti
-    counter: 0,
+    userSelected: 0,
     contatti:
     [
       // oggetto 1
@@ -12,19 +12,19 @@ var app = new Vue({
         visible: true,
         messages: [
           {
-            text: 'Quando ci vediamo?',
+            text: 'Che squadra tifi?',
             date: '02.02.2021 ore 10.15',
             shortdate: '10.15',
             type: 'received'
           },
           {
-            text: 'Domani va bene?',
+            text: 'Nessuna in particolare tu?',
             date: '02.02.2021 ore 10.18',
             shortdate: '10.18',
             type: 'sent'
           },
           {
-            text: 'Ok, a domani',
+            text: 'LA MAGGICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
             date: '02.02.2021 ore 10.18',
             shortdate: '10.18',
             type: 'received'
@@ -220,19 +220,36 @@ var app = new Vue({
         ]
       }
     ], // fine contatti
-    utente: {
+    mainUser: {
       nome: 'Giulio',
       cognome: 'Tavoni',
       avatar: '_user',
       access: '02.02.2021 ore 15.47',
       description: 'Playing on'
-    }
+    },
+    messageInput: '',
 
   }, // fine data
   methods: {
     changeMessage(index) {
-      this.counter = index;
+      this.userSelected = index;
+    },
+    sendMessage() {
+      let shortDate = moment().format('HH:mm');
+      let date = moment().format('L') + ' ore ' + shortDate; // 02/03/2021 ore ...
+      console.log(date.replace(/\//g, "."));
+      // pusho il messaggio nell'array
+      this.contatti[this.userSelected].messages.push(
+        {
+          text: this.messageInput,
+          date: date,
+          shortdate: shortDate,
+          type: 'sent'
+        }
+      );
+      this.messageInput = '';
+
     }
-  }
+  } // fine methods
 
 });
