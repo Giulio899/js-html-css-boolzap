@@ -53,14 +53,14 @@
       <div class="cerca">
         <!-- Aside bottom top -->
         <div class="search-input">
-          <input type="text" placeholder="Cerca o inizia una nuova chat">
+          <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchInput" @keyup="searchName">
           <i class="fas fa-search"></i>
         </div>
 
         <!-- Aside bottom down -->
         <div class="search-contact">
 
-          <div class="contact-item" v-for="(item, index) in contatti" :class="{userSelected:index == userSelected}" @click="changeUser(index)">
+          <div class="contact-item" v-for="(item, index) in contatti" v-if="item.visible == true" :class="{userSelected:index == userSelected}" @click="changeUser(index)">
             <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
             <div class="info">
               <span>{{ item.name }}</span>

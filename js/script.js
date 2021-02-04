@@ -2,6 +2,7 @@ var app = new Vue({
   el: '#app',
   data: {
     // array di oggetti
+    searchInput: '',
     userSelected: 0,
     contatti:
     [
@@ -28,6 +29,12 @@ var app = new Vue({
             date: '02.02.2021 ore 10.18',
             shortdate: '10.18',
             type: 'received'
+          },
+          {
+            text: 'DAJEEEEEEE',
+            date: '02.02.2021 ore 10.20',
+            shortdate: '10.20',
+            type: 'sent'
           }
         ]
       },
@@ -299,7 +306,18 @@ var app = new Vue({
         }
       }
     }, // fine lastAccess()
+    searchName() {
+      this.contatti.forEach((item) => {
+        let nameToCheck = item.name.toLowerCase();
+        let input = this.searchInput.toLowerCase();
 
+        if(!nameToCheck.includes(input)) {
+          item.visible = false;
+        } else {
+          item.visible = true;
+        }
+      });
+    } // fine searchName()
 
   } // fine methods
 
