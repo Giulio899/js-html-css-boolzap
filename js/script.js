@@ -231,9 +231,10 @@ var app = new Vue({
 
   }, // fine data
   methods: {
-    changeMessage(index) {
+    changeUser(index) {
       this.userSelected = index;
-    },
+    }, //changeUser(index)
+
     sendMessage() {
       let shortDate = moment().format('HH:mm');
       let date = moment().format('L') + ' ore ' + shortDate; // 02/03/2021 ore ...
@@ -249,7 +250,57 @@ var app = new Vue({
       );
       this.messageInput = '';
 
-    }
+      // OPZIONE 1 CON FUNZIONE INTERNA (QUI SERVE LA FUNZIONE CON LE ARROW ALTRIMENTI IL THIS NON VIENE INTERPRETATO CORRETTAMENTE)
+
+      // setTimeout(() => {
+      //
+      //   shortDate = moment().format('HH:mm');
+      //   date = moment().format('L') + ' ore ' + shortDate; // 02/03/2021 ore ...
+      //   console.log(date.replace(/\//g, "."));
+      //
+      //   this.contatti[this.userSelected].messages.push(
+      //     {
+      //       text: 'Ok',
+      //       date: date,
+      //       shortdate: shortDate,
+      //       type: 'received'
+      //     }
+      //   );
+      //
+      // }, 20000);
+
+      // OPZIONE 2 CON FUNZIONE ESTERNA
+      setTimeout(this.rispostaAuto, 1000);
+    }, // sendMessage()
+
+    rispostaAuto() {
+      shortDate = moment().format('HH:mm');
+      date = moment().format('L') + ' ore ' + shortDate; // 02/03/2021 ore ...
+
+      this.contatti[this.userSelected].messages.push(
+        {
+          text: 'Ok',
+          date: date,
+          shortdate: shortDate,
+          type: 'received'
+        }
+      );
+    }, // rispostaAuto()
+
+    // FUNZIONE PER CALCOLARE L'ORARIO DELL'ULTIMO MESSAGGIO RICEVUTO (NON INVIATO)
+    lastAccess() {
+      let ultimoAccesso;
+      let i = this.contatti[this.userSelected].messages.length - 1;
+      while (i >= 0) {
+        if(this.contatti[this.userSelected].messages[i].type == 'received') {
+          return ultimoAccesso = this.contatti[this.userSelected].messages[i].shortdate;
+        } else {
+          i--;
+        }
+      }
+    }, // fine lastAccess()
+
+
   } // fine methods
 
 });

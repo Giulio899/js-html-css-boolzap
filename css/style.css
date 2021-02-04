@@ -154,6 +154,10 @@ aside .cerca .search-contact .contact-item {
   cursor: pointer;
 }
 
+aside .cerca .search-contact .contact-item.userSelected {
+  background-color: #f0f0f0;
+}
+
 aside .cerca .search-contact .contact-item:hover {
   background-color: #f0f0f0;
 }

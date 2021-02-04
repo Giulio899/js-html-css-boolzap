@@ -60,7 +60,7 @@
         <!-- Aside bottom down -->
         <div class="search-contact">
 
-          <div class="contact-item" v-for="(item, index) in contatti" @click="changeMessage(index)">
+          <div class="contact-item" v-for="(item, index) in contatti" :class="{userSelected:index == userSelected}" @click="changeUser(index)">
             <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
             <div class="info">
               <span>{{ item.name }}</span>
@@ -82,7 +82,7 @@
         <img :src="'img/avatar' + contatti[userSelected].avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
         <div class="info-accesso">
           <span> {{ contatti[userSelected].name }} </span>
-          <p>Ultimo accesso alle</p>
+          <p @click="lastAccess">Ultimo accesso alle {{lastAccess()}} </p>
         </div>
         <div class="icone">
           <i class="fas fa-search" title="Cerca"></i>
