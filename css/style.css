@@ -202,22 +202,27 @@ main .header-main {
   align-items: center;
 }
 
-main .header-main span {
-  font-weight: 500;
-  font-size: 1em;
-}
-
-main .header-main p {
-  margin-top: 2px;
-  font-size: .9em;
-  color: #6b7376;
-}
-
 main .header-main img {
   height: 55px;
   border-radius: 50%;
   margin-right: 20px;
 }
+
+main .header-main .info-accesso span {
+  font-weight: 500;
+  font-size: 1em;
+}
+
+main .header-main .info-accesso p {
+  margin-top: 2px;
+  font-size: .9em;
+  color: #6b7376;
+}
+
+main .header-main .info-accesso p.green {
+  color: #48c257;
+}
+
 
 main .header-main .icone {
   flex-grow: 1;

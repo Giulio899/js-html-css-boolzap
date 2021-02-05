@@ -236,7 +236,8 @@ var app = new Vue({
     },
     messaggioSelezionato: -1,
     messageInput: '',
-    isActive: false
+    isActive: false,
+    isAnswering: false
 
   }, // fine data
   methods: {
@@ -247,7 +248,7 @@ var app = new Vue({
     sendMessage() {
       let shortDate = moment().format('HH:mm');
       let date = moment().format('L') + ' ore ' + shortDate; // 02/03/2021 ore ...
-      console.log(date.replace(/\//g, "."));
+      // console.log(date.replace(/\//g, "."));
       // pusho il messaggio nell'array
       this.contatti[this.userSelected].messages.push(
         {
@@ -279,10 +280,13 @@ var app = new Vue({
       // }, 20000);
 
       // OPZIONE 2 CON FUNZIONE ESTERNA
-      setTimeout(this.rispostaAuto, 1000);
+      setTimeout(this.staRispondendo, 1000);
+      setTimeout(this.rispostaAuto, 3000);
     }, // sendMessage()
 
     rispostaAuto() {
+      this.isAnswering = false;
+
       shortDate = moment().format('HH:mm');
       date = moment().format('L') + ' ore ' + shortDate; // 02/03/2021 ore ...
 
@@ -295,6 +299,13 @@ var app = new Vue({
         }
       );
     }, // rispostaAuto()
+    staRispondendo() {
+      this.isAnswering = true;
+
+      // let feedback = this.contatti[this.userSelected].name + ' sta rispondendo...';
+      // console.log(feedback);
+      // return feedback;
+    },
 
     // FUNZIONE PER CALCOLARE L'ORARIO DELL'ULTIMO MESSAGGIO RICEVUTO (NON INVIATO)
     lastAccess() {
@@ -331,9 +342,14 @@ var app = new Vue({
     toggleTab(index) {
       this.messaggioSelezionato = index;
       this.isActive = !this.isActive;
-    } // fine toggleTab(index)
+    }, // fine toggleTab(index)
+    notActive() {
+      this.isActive = false;
+      console.log('prova')
+    }
 
 
   } // fine methods
+
 
 });

@@ -58,7 +58,7 @@
         </div>
 
         <!-- Aside bottom down -->
-        <div class="search-contact">
+        <div class="search-contact" @click="notActive">
 
           <!-- Questi due modi di scrivere la condizione all'interno di :class sono equivalenti -->
           <!-- :class="{active:index == userSelected}" -->
@@ -86,7 +86,9 @@
         <img :src="'img/avatar' + contatti[userSelected].avatar + '.jpg'" alt="Foto profilo" class="foto-profilo">
         <div class="info-accesso">
           <span> {{ contatti[userSelected].name }} </span>
-          <p @click="lastAccess">Ultimo accesso alle {{lastAccess()}} </p>
+          <!-- <p v-if="staRispondendo">{{staRispondendo()}} </p> -->
+          <p v-if="isAnswering" class="green">{{ contatti[userSelected].name }} sta rispondendo... </p>
+          <p v-else>Ultimo accesso alle {{lastAccess()}} </p>
         </div>
         <div class="icone">
           <i class="fas fa-search" title="Cerca"></i>
@@ -101,7 +103,7 @@
             <div v-for="(element, index) in contatti[userSelected].messages" class="message" :class="element.type">
               <p>{{ element.text }}</p>
               <small>{{ element.shortdate }}</small>
-              <i class="fas fa-angle-down" :class="{show:index == messaggioSelezionato}" @click="toggleTab(index)">
+              <i class="fas fa-angle-down" :class="{show:index == messaggioSelezionato && isActive}" @click="toggleTab(index)">
                 <div class="info" :class="{show: index == messaggioSelezionato && isActive}">
                   <ul>
                     <li>Message info</li>
