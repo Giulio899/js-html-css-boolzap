@@ -16,26 +16,26 @@ var app = new Vue({
             text: 'Che squadra tifi?',
             date: '02.02.2021 ore 10.15',
             shortdate: '10.15',
-            type: 'received'
+            type: 'received',
           },
           {
             text: 'Nessuna in particolare tu?',
             date: '02.02.2021 ore 10.18',
             shortdate: '10.18',
-            type: 'sent'
+            type: 'sent',
           },
-          {
-            text: 'LA MAGGICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-            date: '02.02.2021 ore 10.18',
-            shortdate: '10.18',
-            type: 'received'
-          },
-          {
-            text: 'DAJEEEEEEE',
-            date: '02.02.2021 ore 10.20',
-            shortdate: '10.20',
-            type: 'sent'
-          }
+          // {
+          //   text: 'LA MAGGICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+          //   date: '02.02.2021 ore 10.18',
+          //   shortdate: '10.18',
+          //   type: 'received'
+          // },
+          // {
+          //   text: 'DAJEEEEEEE',
+          //   date: '02.02.2021 ore 10.20',
+          //   shortdate: '10.20',
+          //   type: 'sent'
+          // }
         ]
       },
       // oggetto 2
@@ -234,7 +234,9 @@ var app = new Vue({
       access: '02.02.2021 ore 15.47',
       description: 'Playing on'
     },
+    messaggioSelezionato: -1,
     messageInput: '',
+    isActive: false
 
   }, // fine data
   methods: {
@@ -317,7 +319,20 @@ var app = new Vue({
           item.visible = true;
         }
       });
-    } // fine searchName()
+    }, // fine searchName()
+    deleteMessage(index) {
+      // console.log(this.contatti[this.userSelected].messages.length - 1);
+      if(this.contatti[this.userSelected].messages.length - 1 != 0) {
+        this.contatti[this.userSelected].messages.splice(index, 1);
+      } else {
+        this.contatti[this.userSelected].messages.splice(index, 1);
+      }
+    }, // fine deleteMessage(index)
+    toggleTab(index) {
+      this.messaggioSelezionato = index;
+      this.isActive = !this.isActive;
+    } // fine toggleTab(index)
+
 
   } // fine methods
 

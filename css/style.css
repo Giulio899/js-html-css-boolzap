@@ -154,7 +154,7 @@ aside .cerca .search-contact .contact-item {
   cursor: pointer;
 }
 
-aside .cerca .search-contact .contact-item.userSelected {
+aside .cerca .search-contact .contact-item.active {
   background-color: #f0f0f0;
 }
 
@@ -257,15 +257,6 @@ main .testo-messaggi .message {
   position: relative;
 }
 
-main .testo-messaggi .message small {
-  color: rgb(168, 168, 168);
-  text-align: right;
-  position: absolute;
-  right: 8px;
-  bottom: 3px;
-  font-size: .8em;
-}
-
 main .testo-messaggi .message.received {
   align-self: flex-start;
 }
@@ -274,6 +265,91 @@ main .testo-messaggi .message.sent {
   align-self: flex-end;
   background-color: #dcf8c6;
 }
+
+main .testo-messaggi .message small {
+  color: rgb(168, 168, 168);
+  text-align: right;
+  position: absolute;
+  right: 8px;
+  bottom: 3px;
+  font-size: .8em;
+  transition: opacity .2s;
+}
+
+main .testo-messaggi .message:hover small {
+  opacity: 0;
+}
+
+main .testo-messaggi .message i {
+  color: rgb(168, 168, 168);
+  position: absolute;
+  right: 9px;
+  top: 3px;
+  font-size: 1.3em;
+  cursor: pointer;
+  opacity: 0;
+}
+
+
+/* classe dinamica collegata a vue */
+main .testo-messaggi .message i.show {
+  opacity: 1;
+}
+
+main .testo-messaggi .message:hover i {
+  opacity: 1;
+  transition: .2s;
+}
+
+
+main .testo-messaggi .message .info {
+  display: none;
+}
+
+/* classe dinamica collegata a vue */
+main .testo-messaggi .message .info.show {
+  width: 130px;
+  height: 90px;
+  background-color: white;
+  position: absolute;
+  right: -3px;
+  top: 20px;;
+  font-size: 1.3em;
+  box-shadow: 0px 0px 5px rgba(125, 125, 125, .7);
+  border-radius: 3px;
+  visibility: visible;
+  opacity: 1;
+  word-break: normal;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: auto;
+  transition: opacity .2s;
+}
+
+main .testo-messaggi .message .info ul {
+  list-style-type: none;
+  font-size: .65em;
+  color: rgba(48, 48, 48, 0.8);
+  font-weight: 400;
+
+  /* font-family: 'Arimo', sans-serif; */
+}
+
+main .testo-messaggi .message .info ul li {
+  cursor: pointer;
+  padding: 5px 15px;
+}
+
+main .testo-messaggi .message .info ul li:hover {
+  color: #292929;
+}
+
+main .testo-messaggi .message .info ul li:not(:last-child) {
+  margin-bottom: 15px;
+}
+
 
 /* main-bottom */
 main .input-testo {

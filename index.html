@@ -60,11 +60,15 @@
         <!-- Aside bottom down -->
         <div class="search-contact">
 
-          <div class="contact-item" v-for="(item, index) in contatti" v-if="item.visible == true" :class="{userSelected:index == userSelected}" @click="changeUser(index)">
+          <!-- Questi due modi di scrivere la condizione all'interno di :class sono equivalenti -->
+          <!-- :class="{active:index == userSelected}" -->
+          <!-- :class="(index == userSelected) ? 'active' : ''" -->
+          <div class="contact-item" v-for="(item, index) in contatti" v-if="item.visible == true" :class="{active:index == userSelected}" @click="changeUser(index)">
             <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
             <div class="info">
               <span>{{ item.name }}</span>
-              <p>{{ item.messages[item.messages.length - 1].text }}</p>
+              <p v-if="item.messages.length > 0">{{ item.messages[item.messages.length - 1].text }}</p>
+              <p v-else><i>Nessun messaggio con {{ item.name }}</i></p>
             </div>
           </div>
 
@@ -94,9 +98,17 @@
       <!-- main center (sezione principale) -->
       <div class="testo-messaggi">
 
-            <div v-for="(element) in contatti[userSelected].messages" class="message" :class="element.type">
+            <div v-for="(element, index) in contatti[userSelected].messages" class="message" :class="element.type">
               <p>{{ element.text }}</p>
               <small>{{ element.shortdate }}</small>
+              <i class="fas fa-angle-down" :class="{show:index == messaggioSelezionato}" @click="toggleTab(index)">
+                <div class="info" :class="{show: index == messaggioSelezionato && isActive}">
+                  <ul>
+                    <li>Message info</li>
+                    <li @click="deleteMessage(index)">Delete message</li>
+                  </ul>
+                </div>
+              </i>
             </div>
 
       </div>
