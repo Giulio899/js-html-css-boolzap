@@ -66,7 +66,11 @@
           <div class="contact-item" v-for="(item, index) in contatti" v-if="item.visible == true" :class="{active:index == userSelected}" @click="changeUser(index)">
             <img :src="'img/avatar' + item.avatar + '.jpg'" :alt="'Foto profilo di ' + item.name" class="foto-profilo">
             <div class="info">
-              <span>{{ item.name }}</span>
+              <div class="first-row">
+                <span>{{ item.name }}</span>
+                <span v-if="item.messages.length > 0">{{ item.messages[item.messages.length - 1].shortdate}} </span>
+                <span v-else></span>
+              </div>
               <p v-if="item.messages.length > 0">{{ item.messages[item.messages.length - 1].text }}</p>
               <p v-else><i>Nessun messaggio con {{ item.name }}</i></p>
             </div>
@@ -88,7 +92,7 @@
           <span> {{ contatti[userSelected].name }} </span>
           <!-- <p v-if="staRispondendo">{{staRispondendo()}} </p> -->
           <p v-if="isAnswering" class="green">{{ contatti[userSelected].name }} sta rispondendo... </p>
-          <p v-else>Ultimo accesso alle {{lastAccess()}} </p>
+          <p v-else-if="contatti[userSelected].messages.length > 0">Ultimo accesso alle {{lastAccess()}} </p>
         </div>
         <div class="icone">
           <i class="fas fa-search" title="Cerca"></i>
@@ -106,11 +110,20 @@
               <i class="fas fa-angle-down" :class="{show:index == messaggioSelezionato && isActive}" @click="toggleTab(index)">
                 <div class="info" :class="{show: index == messaggioSelezionato && isActive}">
                   <ul>
-                    <li>Message info</li>
-                    <li @click="deleteMessage(index)">Delete message</li>
+                    <li @click="showDetails(index)">Info messaggio</li>
+                    <li @click="deleteMessage(index)">Cancella messaggio</li>
                   </ul>
                 </div>
               </i>
+              <div class="details" :class="{show: details && index == indexDetails}">
+                <p v-if="element.type=='received'">Messaggio ricevuto il <br> {{ element.date }} <br> da  {{contatti[userSelected].name}}
+                  <i class="fas fa-times" @click="closeDetails"></i>
+                </p>
+                <p v-if="element.type=='sent'">Messaggio inviato il <br> {{ element.date }}
+                  <i class="fas fa-times" @click="closeDetails"></i>
+                </p>
+
+              </div>
             </div>
 
       </div>

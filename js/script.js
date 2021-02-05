@@ -24,18 +24,18 @@ var app = new Vue({
             shortdate: '10.18',
             type: 'sent',
           },
-          // {
-          //   text: 'LA MAGGICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-          //   date: '02.02.2021 ore 10.18',
-          //   shortdate: '10.18',
-          //   type: 'received'
-          // },
-          // {
-          //   text: 'DAJEEEEEEE',
-          //   date: '02.02.2021 ore 10.20',
-          //   shortdate: '10.20',
-          //   type: 'sent'
-          // }
+          {
+            text: 'LA MAGGICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \u{1F7E1}\u{1F534}\u{1F43A}\u{1F43A}\u{1F43A}',
+            date: '02.02.2021 ore 10.18',
+            shortdate: '10.18',
+            type: 'received'
+          },
+          {
+            text: 'DAJEEEEEEE \u{1F49B}\u{1F497}',
+            date: '02.02.2021 ore 10.20',
+            shortdate: '10.20',
+            type: 'sent'
+          }
         ]
       },
       // oggetto 2
@@ -51,7 +51,7 @@ var app = new Vue({
             type: 'sent'
           },
           {
-            text: 'Alle 15.30',
+            text: 'Comincia alle 15.30',
             date: '02.02.2021 ore 10.40',
             shortdate: '10.40',
             type: 'received'
@@ -115,7 +115,7 @@ var app = new Vue({
             type: 'sent'
           },
           {
-            text: 'Certo!',
+            text: 'Certo! \u{1F600}\u{1F600}',
             date: '02.02.2021 ore 12.46',
             shortdate: '12.46',
             type: 'received'
@@ -155,7 +155,7 @@ var app = new Vue({
         visible: true,
         messages: [
           {
-            text: 'Dove sei?',
+            text: 'Perché non rispondi?',
             date: '02.02.2021 ore 12.52',
             shortdate: '12.52',
             type: 'received'
@@ -181,7 +181,7 @@ var app = new Vue({
         visible: true,
         messages: [
           {
-            text: 'Dove sei?',
+            text: 'Perché non rispondi?',
             date: '02.02.2021 ore 12.52',
             shortdate: '12.52',
             type: 'received'
@@ -207,7 +207,7 @@ var app = new Vue({
         visible: true,
         messages: [
           {
-            text: 'Dove sei?',
+            text: 'Perché non rispondi?',
             date: '02.02.2021 ore 12.52',
             shortdate: '12.52',
             type: 'received'
@@ -237,8 +237,9 @@ var app = new Vue({
     messaggioSelezionato: -1,
     messageInput: '',
     isActive: false,
-    isAnswering: false
-
+    isAnswering: false,
+    details: false,
+    indexDetails: -1
   }, // fine data
   methods: {
     changeUser(index) {
@@ -292,7 +293,7 @@ var app = new Vue({
 
       this.contatti[this.userSelected].messages.push(
         {
-          text: 'Ok',
+          text: 'Ok! \u{1F984} \u{1F60D} \u{1F98A}',
           date: date,
           shortdate: shortDate,
           type: 'received'
@@ -345,7 +346,14 @@ var app = new Vue({
     }, // fine toggleTab(index)
     notActive() {
       this.isActive = false;
-      console.log('prova')
+      this.details = false;
+    }, // fine notActive()
+    showDetails(index) {
+      this.details = true;
+      this.indexDetails = index;
+    },
+    closeDetails(index) {
+      this.details = false;
     }
 
 
